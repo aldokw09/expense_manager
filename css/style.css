@@ -1,0 +1,35 @@
+.card-body-icon {
+	position: absolute;
+	z-index: 0;
+	top: -0.7rem;
+	right: 0.5rem;
+	opacity: 0.4;
+	font-size: 5rem;
+	-webkit-transform: rotate(15deg);
+	transform: rotate(15deg);
+}
+
+button.page-link{
+	display: inline-block;
+}
+button.page-link{
+	font-size: 20px;
+	color: #29b3ed;
+	font-weight: 500;
+}
+.offset{
+	width: 500px !important;
+	margin: 20px auto;  
+}
+
+.printNoteText{
+	width: 60% !important; 
+	text-overflow: ellipsis;
+	overflow: hidden !important; 
+	white-space: nowrap !important;
+}
+
+/*.gradient-buttons {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.2) 49%, rgba(0,0,0,0.15) 51%, rgba(0,0,0,0.05));
+    background-repeat: repeat-x;
+}*/
