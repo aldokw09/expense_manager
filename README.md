@@ -5,9 +5,9 @@
 - Export data ke CSV berdasarkan tanggal dan kategori.
 - Report berdasarkan kategori untuk uang masuk dan uang keluar.
 
-# login
+# Login
 - email : user1@user.com 
 - pw : 123456
 
-# demo
+# Demo
 https://expensemanagerwicak.herokuapp.com/
