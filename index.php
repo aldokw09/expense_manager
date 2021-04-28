@@ -375,8 +375,10 @@
     	balance: function(){
     		axios.get('indexBalanceBal.php?id_user=<?php echo $_SESSION['user123'] ?>')
     		.then(function (result) {
+          truebalance = "";
     			balance.balancess = result.data;
-    			balance.balancess = formatRupiah(balance.balancess);
+    			truebalance = formatRupiah(balance.balancess.balance);
+          balance.balancess = balance.balancess.symbol + truebalance;
             });
 
     	}
