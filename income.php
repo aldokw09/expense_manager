@@ -320,7 +320,7 @@
             <label for="ammount">Ammount :
               <span class="text-danger" id="errorAmmount" style="display: none;">Ammount still empty!</span>
             </label>
-            <input type="text" class="form-control" id="ammount" v-model="ammount" v-on:input="checkAmmount" required>
+            <input type="text" class="form-control" v-on:keyup="ubahrupiah()" id="ammount" v-model="ammount" v-on:input="checkAmmount" required>
 
             <label for="category">Category :
               <span class="text-danger" id="errorCategory" style="display: none;">Category still empty!</span>
@@ -368,6 +368,12 @@
 </html>
 
 <script type="text/javascript">
+  function ubahrupiah(){
+    var value = $('#ammount').val();
+    var valuerupiah = formatRupiah(value);
+    $('#ammount').val(valuerupiah);
+  }
+
 	var manage = new Vue({
 		el: "#manage",
 		data:{
@@ -495,6 +501,9 @@
     tanggal = "0" + tanggal;
   }
   var bulan = (today.getMonth()+1);
+  if(bulan<10){
+    bulan = "0" + bulan;
+  }
   var tahun = today.getFullYear();
   
 	var insert = new Vue({
