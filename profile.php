@@ -1,5 +1,6 @@
 <?php 
   session_start();
+  require('resources/isMobile.php');
 
   if (!isset($_SESSION['user123']) || $_SESSION['user123'] == ''){
     header('location:login.php');
@@ -39,24 +40,15 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-    <p id="currentId" style="display: none"><?php echo $_SESSION['user123'] ?></p>
     <!-- Sidebar -->
-    <?php 
-      $useragent = $_SERVER['HTTP_USER_AGENT']; 
-      $iPod = stripos($useragent, "iPod"); 
-      $iPad = stripos($useragent, "iPad"); 
-      $iPhone = stripos($useragent, "iPhone");
-      $Android = stripos($useragent, "Android"); 
-      $iOS = stripos($useragent, "iOS");
-
-      $DEVICE = ($iPod||$iPad||$iPhone||$Android||$iOS);
-      if (!$DEVICE) { ?>
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-      <?php }
-      else{ ?>
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
-      <?php }
-     ?>
+      <?php 
+        if (!$DEVICE) { ?>
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <?php }
+        else{ ?>
+          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+        <?php }
+       ?>
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -319,9 +311,6 @@
 
   <!-- Page level plugins -->
   <script src="resources/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/myChart.js"></script>
 
 </body>
 
