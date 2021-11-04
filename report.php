@@ -191,8 +191,8 @@
           </div>
 
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <div class="col-md-10">
-              <select class="form-control col-md-4 d-inline" v-model="categorys" required>
+            <div class="col-md-9">
+              <select class="form-control col-md-5 d-inline" v-model="categorys" required>
                 <option disabled value="">--Select Category--</option>
                 <option v-for="categoryss in list_categorys " 
                         :value="categoryss.id_category" v-if="categoryss.type_category == '1'" class="text-success">
@@ -203,13 +203,23 @@
                       {{ categoryss.name_category }} (Expense)
                 </option>
               </select>
-              <button class="mr-3 mb-1 btn btn-success d-inline" v-on:click="search">
-                <i class="fa fa-search"></i>&nbsp; Search
-              </button>
+              <?php 
+              if (!$DEVICE) { ?>
+                <button class="mr-3 mb-1 btn btn-success d-inline" v-on:click="search">
+                  <i class="fa fa-search"></i>&nbsp; Search
+                </button>
+              <?php }
+              else{ ?>
+                <button class="mt-2 mb-1 btn btn-success d-inline col-md-12" v-on:click="search">
+                  <i class="fa fa-search"></i>&nbsp; Search
+                </button>
+              <?php } ?>
               <div id="searchLoading" style="display: none;">Loading...</div>
             </div>
-            <div class="btn border border-success text-success px-4" id="balance" style="cursor: default;">
-                Total : <br> <span class="h5 font-weight-bold">Rp {{ total }},-</span>
+            <div class="d-flex col-md-3">
+              <div class="ml-auto mt-1 btn border border-success text-success px-4" id="balance" style="cursor: default;">
+                  Total : <br> <span class="h5 font-weight-bold">Rp {{ total }},-</span>
+              </div>
             </div>
           </div>
 
@@ -225,14 +235,14 @@
                     <tr>
                       <th>No.</th>
                       <th>Name</th>
-                      <th>Ammount</th>
+                      <th>Ammount (rupiah)</th>
                       <th>Category</th>
                       <th>Date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for='(manage, i) in list_manage'>
-                      <td>{{ i }}	</td>
+                    <tr v-for='manage in list_manage'>
+                      <td>{{ manage.number }}	</td>
                       <td>{{ manage.names }}</td>
                       <td v-if="manage.ammount_ex == '0'" class="text-success font-weight-bold">+{{ manage.ammount_in }}</td>
                       <td v-else class="text-danger font-weight-bold">-{{ manage.ammount_ex }}</td>
@@ -368,6 +378,7 @@
         .then(function (result) {
           manage.list_manage = result.data;
           for($i=0; $i<manage.list_manage.length; $i++){
+            manage.list_manage[$i].number = $i+1;
             manage.list_manage[$i].ammount_in = formatRupiah(manage.list_manage[$i].ammount_in);
           }
           $("#searchLoading").hide();
