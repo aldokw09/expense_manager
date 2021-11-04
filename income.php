@@ -328,7 +328,7 @@
             <label for="ammount">Ammount :
               <span class="text-danger" id="errorAmmount" style="display: none;">Ammount still empty!</span>
             </label>
-            <input type="text" class="form-control" v-on:keyup="ubahrupiah()" id="ammount" v-model="ammount" v-on:input="checkAmmount" required>
+            <input type="text" inputmode="numeric" class="form-control" v-on:keyup="ubahrupiah()" id="ammount" v-model="ammount" v-on:input="checkAmmount" required>
 
             <label for="category">Category :
               <span class="text-danger" id="errorCategory" style="display: none;">Category still empty!</span>
