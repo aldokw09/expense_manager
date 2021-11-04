@@ -184,13 +184,18 @@
 
           <!-- Page Heading -->
            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Report</h1>
-            <button href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exportDataModal">
+            <h1 class="float-left h3 mb-0 text-gray-800">Report</h1>
+            <button href="#" class="float-right d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exportDataModal">
               <i class="fas fa-download fa-sm text-white-50"></i> Export Data
             </button>
           </div>
 
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <?php 
+          if ($DEVICE) { ?>
+            <div style="height: 30px;"></div>
+          <?php } ?>
+
+          <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
             <div class="col-md-9">
               <select class="form-control col-md-5 d-inline" v-model="categorys" required>
                 <option disabled value="">--Select Category--</option>
