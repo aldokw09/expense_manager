@@ -301,6 +301,8 @@
   <script src="js/sb-admin-2.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+  <script src="js/isMobile.js"></script>
+
 </body>
 
 </html>

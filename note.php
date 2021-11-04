@@ -388,6 +388,8 @@
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+  <script src="js/isMobile.js"></script>
+
 </body>
 
 </html>

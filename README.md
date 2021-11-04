@@ -10,4 +10,8 @@
 - pw : 123456
 
 # Demo
+<<<<<<< HEAD
 https://expensemanagerwicak.herokuapp.com/
+=======
+https://expensemanagerwicak.herokuapp.com/
+>>>>>>> 1cf57ee41e0b4a8ffa9e70da26a362a9e86cfd7f

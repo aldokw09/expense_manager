@@ -361,6 +361,8 @@
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+  <script src="js/isMobile.js"></script>
+
 </body>
 
 </html>
@@ -486,6 +488,14 @@
       this.ambil();
     }
 	});
+
+  var today = new Date();
+  var tanggal = today.getDate();
+  if(tanggal<10){
+    tanggal = "0" + tanggal;
+  }
+  var bulan = (today.getMonth()+1);
+  var tahun = today.getFullYear();
   
 	var insert = new Vue({
 		el: "#insert",
@@ -494,7 +504,7 @@
 			names: "",
 			ammount: "",
 			category: "",
-			date: "",
+			date: tahun+"-"+bulan+"-"+tanggal,
       value: "",
     },
     methods:{

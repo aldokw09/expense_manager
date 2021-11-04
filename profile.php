@@ -52,8 +52,8 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -156,7 +156,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="profile.php">
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -186,112 +186,68 @@
           </div>
 
           <!-- Content Row -->
-          <div class="row" id="balance">
+          <div class="row">
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-4 col-sm-6 mb-4">
-                <div class="card text-white bg-success o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fas fa-fw fa-dollar-sign"></i>
-                        </div>
-                        <div class="mr-5">Income</div>
-                        <div class="mr-5 h5 font-weight-bold">Rp {{ incomes }},-</div>
+            <div class="col-lg-4 order-lg-2">
+
+                <div class="card shadow mb-4">
+                    <div class="card-profile-image mt-4">
+                        <img class="rounded-circle avatar avatar mx-auto d-block" src="img/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" style="height: 180px; width: 180px;">
                     </div>
-                    <a class="nav-link bg-success text-white text-center card-footer clearfix small z-1" href="income.php">
-                        <span class="float-left">View All</span>
-                        <span class="float-right">
-                            <i class="fas fa-angle-right"></i>
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-4 col-sm-6 mb-4">
-                <div class="card text-white bg-danger o-hidden h-100">
                     <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fas fa-fw fa-money-bill"></i>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="text-center">
+                                    <h5 class="font-weight-bold">test</h5>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mr-5">Expense</div>
-                        <div class="mr-5 h5 font-weight-bold">Rp {{ expenses }},-</div>
                     </div>
-                    <a class="nav-link bg-danger text-white text-center card-footer clearfix small z-1" href="expense.php">
-                        <span class="float-left">View All</span>
-                        <span class="float-right">
-                            <i class="fas fa-angle-right"></i>
-                        </span>
-                    </a>
                 </div>
+
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-4 col-sm-6 mb-4">
-                <div class="card text-white bg-primary o-hidden h-100">
+            <div class="col-lg-8 order-lg-1">
+
+                <div class="card shadow mb-4">
+
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">My Account</h6>
+                    </div>
+
                     <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fas fa-wallet"></i>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="name">Name</label>
+                                        <div class="form-control">test</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="email">Email address</label>
+                                        <div class="form-control">test@test.com</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mr-5">Balance</div>
-                        <div class="mr-5 h5 font-weight-bold">Rp {{ balancess }},-</div>
+
                     </div>
-                    <a class="nav-link bg-primary text-white text-center card-footer clearfix small z-1" href="transaction.php">
-                        <span class="float-left">View All</span>
-                        <span class="float-right">
-                            <i class="fas fa-angle-right"></i>
-                        </span>
-                    </a>
-                </div>
-            </div>
 
-          </div>
+                </div>
 
-          <!-- Content Row -->
-
-          <div class="row" id="ChartArea">
-
-            <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Balance Overview per Date (<span id="bulanSkrg"></span>)</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <canvas id="myAreaChart" style="position: relative; height:40vh; width:80vw"></canvas>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-6 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Income Overview per Category (<span id="bulanSkrg2"></span>)</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <canvas id="myAreaChart2"></canvas>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-6 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Expense Overview per Category (<span id="bulanSkrg3"></span>)</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <canvas id="myAreaChart3"></canvas>
-                </div>
-              </div>
             </div>
 
         </div>
+
+          <!-- Content Row -->
+
+          
         <!-- /.container-fluid -->
 
       </div>
@@ -351,38 +307,18 @@
 
   <!-- Page level custom scripts -->
   <script src="js/myChart.js"></script>
-  <script src="js/isMobile.js"></script>
 
 </body>
 
 </html>
 
 <script type="text/javascript">
-  
-
 	var balance = new Vue({
 		el: "#balance",
 		data:{
-			incomes: 0,
-			expenses: 0,
 			balancess: 0
     },
     methods:{
-    	income: function(){
-    		axios.get('indexBalanceIn.php?id_user=<?php echo $_SESSION['user123'] ?>')
-    		.then(function (result) {
-    			balance.incomes = result.data;
-    			balance.incomes = formatRupiah(balance.incomes);
-            });
-    	},
-    	expense: function(){
-    		axios.get('indexBalanceEx.php?id_user=<?php echo $_SESSION['user123'] ?>')
-    		.then(function (result) {
-    			balance.expenses = result.data;
-    			balance.expenses = formatRupiah(balance.expenses);
-            });
-
-    	},
     	balance: function(){
     		axios.get('indexBalanceBal.php?id_user=<?php echo $_SESSION['user123'] ?>')
     		.then(function (result) {
@@ -395,26 +331,7 @@
     	}
     },
     created(){
-      this.income();
-      this.expense();
       this.balance();
     }
 	});
-
-	function formatRupiah(angka, prefix){
-		var number_string = angka.replace(/[^,\d]/g, '').toString(),
-		split   		= number_string.split(','),
-		sisa     		= split[0].length % 3,
-		rupiah     		= split[0].substr(0, sisa),
-		ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
-
-		// tambahkan titik jika yang di input sudah menjadi angka ribuan
-		if(ribuan){
-			separator = sisa ? '.' : '';
-			rupiah += separator + ribuan.join('.');
-		}
-
-		rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-		return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-	}
 </script>

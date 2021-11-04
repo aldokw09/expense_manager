@@ -177,25 +177,34 @@
           <!-- Page Heading -->
            <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Report</h1>
-            <button href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exportDataModal">
+            <button href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exportDataModal">
               <i class="fas fa-download fa-sm text-white-50"></i> Export Data
             </button>
           </div>
 
-          <select class="form-control col-md-4 d-inline" v-model="categorys" required>
-            <option disabled value="">--Select Category--</option>
-            <option v-for="categoryss in list_categorys " 
-                    :value="categoryss.id_category" v-if="categoryss.type_category == '1'" class="text-success">
-                  {{ categoryss.name_category }} (Income)
-            </option>
-            <option v-for="categoryss in list_categorys " 
-                    :value="categoryss.id_category" v-if="categoryss.type_category == '2'" class="text-danger">
-                  {{ categoryss.name_category }} (Expense)
-            </option>
-          </select>
-          <button class="mr-3 btn btn-success d-inline" v-on:click="search">
-            <i class="fa fa-search"></i>&nbsp; Search
-          </button>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="col-md-10">
+              <select class="form-control col-md-4 d-inline" v-model="categorys" required>
+                <option disabled value="">--Select Category--</option>
+                <option v-for="categoryss in list_categorys " 
+                        :value="categoryss.id_category" v-if="categoryss.type_category == '1'" class="text-success">
+                      {{ categoryss.name_category }} (Income)
+                </option>
+                <option v-for="categoryss in list_categorys " 
+                        :value="categoryss.id_category" v-if="categoryss.type_category == '2'" class="text-danger">
+                      {{ categoryss.name_category }} (Expense)
+                </option>
+              </select>
+              <button class="mr-3 mb-1 btn btn-success d-inline" v-on:click="search">
+                <i class="fa fa-search"></i>&nbsp; Search
+              </button>
+              <div id="searchLoading" style="display: none;">Loading...</div>
+            </div>
+            <div class="btn border border-success text-success px-4" id="balance" style="cursor: default;">
+                Total : <br> <span class="h5 font-weight-bold">Rp {{ total }},-</span>
+            </div>
+          </div>
+
 
           
 
@@ -215,7 +224,7 @@
                   </thead>
                   <tbody>
                     <tr v-for='(manage, i) in list_manage'>
-                      <td>{{i + 1}}	</td>
+                      <td>{{ i }}	</td>
                       <td>{{ manage.names }}</td>
                       <td v-if="manage.ammount_ex == '0'" class="text-success font-weight-bold">+{{ manage.ammount_in }}</td>
                       <td v-else class="text-danger font-weight-bold">-{{ manage.ammount_ex }}</td>
@@ -308,6 +317,8 @@
   <script src="js/sb-admin-2.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+  <script src="js/isMobile.js"></script>
+
 </body>
 
 </html>
@@ -320,7 +331,8 @@
       list_categorys: [],
       categorys: "",
       datefrom: "",
-      dateto: ""
+      dateto: "",
+      total: "0"
     },
     methods:{
     	ambil: function(){
@@ -337,9 +349,20 @@
           });
       },
       search: function(){
+        $("#searchLoading").show();
+        axios.get("reportBalance.php?id_user=<?php echo $_SESSION['user123'] ?>&category=" +this.categorys)
+        .then(function (result) {
+          manage.total = result.data;
+          manage.total = formatRupiah(manage.total);
+          });
+
         axios.get("reportShow.php?id_user=<?php echo $_SESSION['user123'] ?>&category=" +this.categorys)
         .then(function (result) {
           manage.list_manage = result.data;
+          for($i=0; $i<manage.list_manage.length; $i++){
+            manage.list_manage[$i].ammount_in = formatRupiah(manage.list_manage[$i].ammount_in);
+          }
+          $("#searchLoading").hide();
           });
       },
       exportss: function(){
@@ -380,4 +403,21 @@
       this.categorysss();
     }
 	});
+
+  function formatRupiah(angka, prefix){
+    var number_string = angka.replace(/[^,\d]/g, '').toString(),
+    split       = number_string.split(','),
+    sisa        = split[0].length % 3,
+    rupiah        = split[0].substr(0, sisa),
+    ribuan        = split[0].substr(sisa).match(/\d{3}/gi);
+
+    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+    if(ribuan){
+      separator = sisa ? '.' : '';
+      rupiah += separator + ribuan.join('.');
+    }
+
+    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+    return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+  }
 </script>
