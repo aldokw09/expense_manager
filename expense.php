@@ -192,7 +192,7 @@
               </button>
             </div>
             <div class="float-right btn border border-danger text-danger px-4" id="balance" style="cursor: default; margin-top: -30px;">
-                Total Expense : <br> <span class="h5 font-weight-bold">Rp {{ expenses }},-</span>
+                Total Expense : <br> <span class="h6 font-weight-bold">Rp {{ expenses }},-</span>
             </div>
           </div>
 
